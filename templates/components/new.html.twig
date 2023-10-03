@@ -1,0 +1,40 @@
+<form name="create_component" method="post">
+    <div id="create_component">
+        <div>
+            <label for="create_component_name" class="required">Name</label>
+            <input type="text" id="create_component_name" name="create_component[name]" required="required" maxlength="255"/>
+        </div>
+        <div>
+            <label for="create_component_description">Description</label>
+            <input type="text" id="create_component_description" name="create_component[description]" maxlength="255"/>
+        </div>
+        <div>
+            <label for="create_component_code">Code</label>
+            <input type="text" id="create_component_code" name="create_component[code]" maxlength="100000000"/>
+        </div>
+        <div>
+            <label for="create_component_price">Price</label>
+            <input type="text" id="create_component_price" name="create_component[price]"/>
+        </div>
+        <div>
+            <label for="create_component_type" class="required">Type</label>
+            <select id="create_component_type" name="create_component[type]">
+                <option value="1">React</option>
+                <option value="2">Vue</option>
+                <option value="3">Angular</option>
+            </select>
+        </div>
+        <div>
+            <label for="create_component_DesignSystem" class="required">Design system</label>
+            <select id="create_component_DesignSystem" name="create_component[DesignSystem]">
+                {% for option in app.user.designsystems %}
+                <option value="{{ option.id }}">{{ option.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <button type="submit" id="create_component_submit" name="create_component[submit]">Submit</button>
+        </div>
+        <input type="hidden" id="create_component__token" name="create_component[_token]" value="c78d6244.B6WTXsE95vGKHKcTQb7M-TWPFqAj-M-WIlKziAGyMOk.P8PXC4xRkMOnVeV_MtKPj1i7RNhPyYDfdT_jy2qBXdlJ_foWr2q0t98vnw"/>
+    </div>
+</form>

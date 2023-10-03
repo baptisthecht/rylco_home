@@ -1,0 +1,9 @@
+{% include "base.html.twig" %}
+
+<body class="flex flex-col items-center gap-10">
+    <h1 class="text-xl text-gray-700 font-bold text-center">Hi {{ user.firstname }} ! Please confirm your email!</h1>
+    <h3 class="text-sm text-gray-700 font-bold text-center">Please confirm your email address by clicking the following link:</h3>
+    <a class="text-sm text-white bg-rose-500 hover:bg-rose-400 font-bold text-center" href="{{ signedUrl }}">Confirm my Email</a>.
+    <h3 class="text-sm text-gray-700 font-bold text-center">This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</h3>
+    <h3 class="text-sm text-gray-700 font-bold text-center">Cheers!</h3>
+</body>
