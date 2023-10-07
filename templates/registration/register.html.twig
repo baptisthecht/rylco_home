@@ -63,19 +63,19 @@
                     <div class="text-rose-500 w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.password) }}</div>
                 </div>
                 <div class="flex items-center">
-                    <input id="_remember_me" name="_remember_me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-rose-600 focus:ring-rose-600">
-                    <label for="_remember_me" class="ml-3 block text-sm font-medium leading-6 text-gray-900">I agree the <a href="/tos" class="font-semibold leading-6 text-rose-600 hover:text-rose-500">terms of services</a>.</label>
+                    <input id="_remember_me" name="_remember_me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-rose-600">
+                    <label for="_remember_me" class="ml-3 block text-sm font-medium leading-6 text-gray-900">I agree the <a href="/tos" class="font-semibold leading-6 text-primary hover:text-rose-500">terms of services</a>.</label>
                 </div>
                 <div>
                     {{ form_row(registrationForm._token) }}
-                    <button type="submit" class="flex w-full justify-center rounded-md bg-rose-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600">Register</button>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover: bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600">Register</button>
                     {{ form_end(registrationForm) }}
                 </div>
             </form>
 
             <p class="mt-10 text-center text-sm text-gray-500">
                 Already a member?
-                <a href="/login" class="font-semibold leading-6 text-rose-600 hover:text-rose-500">Log in here</a>
+                <a href="/login" class="font-semibold leading-6 text-primary hover:text-rose-500">Log in here</a>
             </p>
         </div>
     </div>
