@@ -19,6 +19,8 @@ class ShowComponentController extends AbstractController
     public function index(int $id, ManagerRegistry $doctrine, Request $request): Response
     {
 
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
+
         $repository = $doctrine->getRepository(Component::class);
         $component = $repository->find($id);
 

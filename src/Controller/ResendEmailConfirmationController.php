@@ -23,6 +23,7 @@ class ResendEmailConfirmationController extends AbstractController
     #[Route('/resendemailconfirmation', name: 'app_resend_email_confirmation')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
         $user = $this->getUser();
         if($user->isVerified()){
             $this->addFlash('success', 'Your email adress is already verified!');

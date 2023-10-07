@@ -11,6 +11,8 @@ class CommunityController extends AbstractController
     #[Route('/community', name: 'app_community')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
+
         return $this->render('community/index.html.twig', [
             'controller_name' => 'CommunityController',
         ]);

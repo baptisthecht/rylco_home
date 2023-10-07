@@ -11,9 +11,8 @@ class WalletController extends AbstractController
     #[Route('/wallet', name: 'app_wallet')]
     public function index(): Response
     {
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
+
         return $this->render('wallet/index.html.twig', [
             'controller_name' => 'WalletController',
         ]);

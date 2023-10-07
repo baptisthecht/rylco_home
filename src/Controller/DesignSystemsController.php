@@ -11,6 +11,8 @@ class DesignSystemsController extends AbstractController
     #[Route('/designsystems', name: 'app_design_systems')]
     public function index(): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
         return $this->render('design_systems/index.html.twig', [
             'controller_name' => 'DesignSystemsController',
         ]);

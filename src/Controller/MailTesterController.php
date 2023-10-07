@@ -18,6 +18,7 @@ class MailTesterController extends AbstractController
     #[Route('/email')]
         public function sendEmail(MailerInterface $mailer): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $email = (new Email())
             ->from('hello@example.com')
             ->to('you@example.com')
