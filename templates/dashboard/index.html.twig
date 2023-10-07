@@ -49,7 +49,7 @@
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                     <div class="flex h-16 shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=rose&shade=600" alt="Your Company">
+                        <img class="h-8 w-auto" src="{{ asset('rylco-icon.png') }}" alt="Your Company">
                     </div>
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -144,7 +144,7 @@
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
             <div class="flex h-16 shrink-0 items-center">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=rose&shade=600" alt="Your Company">
+                <img class="h-8 w-auto" src="{{ asset('rylco-icon.png') }}" alt="Your Company">
             </div>
             <nav class="flex flex-1 flex-col">
                 <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -262,13 +262,12 @@
 
                     <!-- Separator -->
                     <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"></div>
-                    <a href="/new" class="inline-flex items-center gap-x-1.5 rounded-md bg-rose-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600">
+                    <a href="/new" class="inline-flex items-center gap-x-1.5 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600 transition ease-in-out duration-500">
                         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         Create
                     </a>
-
 
                     <!-- Profile dropdown -->
                     <div class="relative">
@@ -300,7 +299,7 @@
                             From: "transform opacity-100 scale-100"
                             To: "transform opacity-0 scale-95"
                         -->
-                        <div  id="usermenu" class="hidden absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                        <div  id="usermenu" class=" transition ease-out duration-100 hidden absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-50", Not Active: "" -->
                             <a href="/profile" class="block px-4 py-1.5 text-sm font-semibold leading-6 text-gray-900 hover:text-rose-600" role="menuitem" tabindex="-1" id="user-menu-item-0">Your profile</a>
                             <a href="/logout" class="block px-4 py-1.5 text-sm font-semibold leading-6 text-gray-900 hover:text-rose-600" role="menuitem" tabindex="-1" id="user-menu-item-1">Log out</a>
@@ -423,6 +422,7 @@
                                 </svg>
                             </li>
                         {% endfor %}
+
                         <!-- More deployments... -->
                     </ul>
 
