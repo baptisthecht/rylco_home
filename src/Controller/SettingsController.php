@@ -58,7 +58,7 @@ class SettingsController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             $email = (new Email())
-                ->from(New Address('me@baptisthecht.fr', 'RealCo'))
+                ->from(New Address('noreply@rylco.app', 'RealCo'))
                 ->to('hechtbaptist@gmail.com')
                 //->cc('cc@example.com')
                 //->bcc('bcc@example.com')
@@ -78,13 +78,13 @@ class SettingsController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             $email = (new Email())
-                ->from(New Address('contact@baptisthecht.fr', 'RealCo'))
+                ->from(New Address('noreply@rylco.app', 'Rylco.app'))
                 ->to('hechtbaptist@gmail.com')
                 //->cc('cc@example.com')
                 //->bcc('bcc@example.com')
                 //->replyTo('fabien@example.com')
                 //->priority(Email::PRIORITY_HIGH)
-                ->subject('Edited bio at realco!')
+                ->subject('Edited bio at rylco!')
                 ->text('Sending emails is fun again!')
                 ->html('<p>See Twig integration for better HTML integration!</p>');
 
@@ -98,7 +98,7 @@ class SettingsController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             $email = (new Email())
-                ->from(New Address('contact@baptisthecht.fr', 'RealCo'))
+                ->from(New Address('noreply@rylco.app', 'RealCo'))
                 ->to('hechtbaptist@gmail.com')
                 //->cc('cc@example.com')
                 //->bcc('bcc@example.com')
@@ -122,22 +122,9 @@ class SettingsController extends AbstractController
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-                $email = (new Email())
-                    ->from(New Address('contact@baptisthecht.fr', 'RealCo'))
-                    ->to('hechtbaptist@gmail.com')
-                    //->cc('cc@example.com')
-                    //->bcc('bcc@example.com')
-                    //->replyTo('fabien@example.com')
-                    //->priority(Email::PRIORITY_HIGH)
-                    ->subject('Edited email at realco!')
-                    ->text('Sending emails is fun again!')
-                    ->html('<p>See Twig integration for better HTML integration!</p>');
-
-                $mailer->send($email);
-                $this->addFlash('success', 'Your email adresss have been updated successfully, check mailbox to confirm it!');
                 $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                     (new TemplatedEmail())
-                        ->from(new Address('contact@baptisthecht.fr', 'RealCo'))
+                        ->from(new Address('noreply@rylco.app', 'Rylco'))
                         ->to($user->getEmail())
                         ->subject('Please Confirm your Email')
                         ->htmlTemplate('registration/confirmation_email.html.twig')
@@ -145,6 +132,7 @@ class SettingsController extends AbstractController
                             'user' => $user
                         ])
                 );
+                $this->addFlash('success', 'Your email adresss have been updated successfully, check mailbox to confirm it!');
                 return $this->redirectToRoute('app_settings');
         }
 

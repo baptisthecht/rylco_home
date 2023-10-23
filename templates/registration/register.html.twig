@@ -3,13 +3,13 @@
     <!DOCTYPE html>
     <body class="bg-white h-screen">
 
-
+    {% set active = "Login" %}
     {% include "base.html.twig" %}
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-10 w-auto" src="{{ asset('rylco-icon.png') }}" alt="Your Company">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Join RealCo now for free</h2>
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Join Rylco now for free</h2>
         </div>
 
         {% for flash_error in app.flashes('verify_email_error') %}

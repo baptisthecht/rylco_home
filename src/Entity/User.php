@@ -72,6 +72,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Deposit::class)]
+    private Collection $deposits;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isPro = null;
+
 
     public function __construct()
     {
@@ -79,6 +85,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
         $this->designSystems = new ArrayCollection();
         $this->sells = new ArrayCollection();
         $this->buys = new ArrayCollection();
+        $this->deposits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -418,6 +425,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Deposit>
+     */
+    public function getDeposits(): Collection
+    {
+        return $this->deposits;
+    }
+
+    public function addDeposit(Deposit $deposit): static
+    {
+        if (!$this->deposits->contains($deposit)) {
+            $this->deposits->add($deposit);
+            $deposit->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeposit(Deposit $deposit): static
+    {
+        if ($this->deposits->removeElement($deposit)) {
+            // set the owning side to null (unless already changed)
+            if ($deposit->getCustomer() === $this) {
+                $deposit->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isIsPro(): ?bool
+    {
+        return $this->isPro;
+    }
+
+    public function setIsPro(?bool $isPro): static
+    {
+        $this->isPro = $isPro;
 
         return $this;
     }

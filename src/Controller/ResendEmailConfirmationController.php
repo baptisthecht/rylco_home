@@ -31,7 +31,7 @@ class ResendEmailConfirmationController extends AbstractController
         }else{
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('contact@baptisthecht.fr', 'RealCo'))
+                    ->from(new Address('noreply@rylco.app', 'Rylco'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')

@@ -8,15 +8,23 @@ use App\Entity\ComponentState;
 use App\Form\ChangeComponentStateType;
 use App\Form\NewTransactionType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ShowComponentController extends AbstractController
 {
+    /**
+     * @throws TransportExceptionInterface
+     */
     #[Route('/component/{id}', name: 'app_show_component')]
-    public function index(int $id, ManagerRegistry $doctrine, Request $request): Response
+    public function index(int $id, ManagerRegistry $doctrine, Request $request, MailerInterface $mailer): Response
     {
 
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
@@ -108,6 +116,20 @@ class ShowComponentController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($transaction);
             $entityManager->flush();
+
+            // Mail de confirmation à l'acheteur
+            $email = (new TemplatedEmail())
+                ->from(New Address('noreply@rylco.app', 'Rylco'))
+                ->to('hechtbaptist@gmail.com')
+                ->priority(Email::PRIORITY_HIGH)
+                ->subject('Congrats, you just made a new sale!')
+                ->htmlTemplate('email_templates/new_sell.html.twig')
+                ->context([
+                    'transaction' => $transaction
+                ]);
+            $mailer->send($email);
+
+            // Mail de confirmation au vendeur
 
             // Redirection
             $this->addFlash('success', $component->getName() . ' is now yours, find it in your components library!');

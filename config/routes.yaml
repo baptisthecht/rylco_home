@@ -1,3 +1,6 @@
 index:
     path: /
     controller: App\Controller\HomeController::index
+app_deposit:
+    path: /deposit
+    controller: App\Controller\DepositController::index

@@ -21,6 +21,7 @@
   }
   ```
 -->
+{% set active = "" %}
 {% include "base.html.twig" %}
   <div class="bg-white">
     {% include 'components/header.html.twig' %}
@@ -34,14 +35,17 @@
           <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl text-center">
               <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Share
-                <span
-                        class="bg-gradient-to-r from-gradient2 to-gradient1 bg-clip-text text-transparent w-min sm:text-6xl text-4xl font-bold tracking-tight">
+                <span class="bg-gradient-to-r from-gradient2 to-gradient1 bg-clip-text text-transparent w-min sm:text-6xl text-4xl font-bold tracking-tight">
                   components
                 </span>
                  effortlessly, unlocking new possibilities.</h1>
               <p class="mt-6 text-lg leading-8 text-gray-500">Unlock the power of component collaboration, eamlessly create and share ReactJS, VueJS, and Angular components to supercharge your development projects and foster a thriving community of innovators.</p>
               <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="#" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">Get started</a>
+                {% if app.user %}
+                  <a href="/dashboard" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">Get started</a>
+                {% else %}
+                  <a href="/login" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">Get started</a>
+                {% endif %}
                 <a href="#" class="flex items-center gap-1">
                   <p href="#" class="text-sm font-semibold leading-6 text-gray-900">Learn more</p>
                   <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[15px] h-[15px]"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" /></svg>
@@ -51,7 +55,7 @@
             </div>
             <div class="mt-16 flow-root sm:mt-24">
               <div class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                <img src="https://tailwindui.com/img/component-images/project-app-screenshot.png" alt="App screenshot" width="2432" height="1442" class="rounded-md shadow-2xl ring-1 ring-gray-900/10">
+                <img src="{{ asset('dashboard.png') }}" alt="App screenshot" width="2432" height="1442" class="rounded-md shadow-2xl ring-1 ring-gray-900/10">
               </div>
             </div>
           </div>
@@ -150,11 +154,11 @@
             <img class="h-12 w-auto" src="https://tailwindui.com/img/logos/workcation-logo-white.svg" alt="">
             <figure>
               <blockquote class="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
-                <p>“Amet amet eget scelerisque tellus sit neque faucibus non eleifend. Integer eu praesent at a. Ornare arcu gravida natoque erat et cursus tortor consequat at. Vulputate gravida sociis enim nullam ultricies habitant malesuada lorem ac.”</p>
+                <p>“Success in the digital age is not just about what you can build alone, but what we can create together. The true power of innovation lies in the collaborative spirit of sharing and working together as a global community.”</p>
               </blockquote>
               <figcaption class="mt-6 text-base text-white">
-                <div class="font-semibold">Judith Black</div>
-                <div class="mt-1">CEO of Tuple</div>
+                <div class="font-semibold">Baptist Hecht</div>
+                <div class="mt-1">CEO of Rylco</div>
               </figcaption>
             </figure>
           </div>
@@ -309,9 +313,39 @@
         <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
         <dl class="mt-10 space-y-8 divide-y divide-gray-900/10">
           <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
-            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">What&#039;s the best thing about Switzerland?</dt>
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">What is Rylco?</dt>
             <dd class="mt-4 lg:col-span-7 lg:mt-0">
-              <p class="text-base leading-7 text-gray-600">I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.</p>
+              <p class="text-base leading-7 text-gray-600">Ryclo is a web service that allows users to create and share components for React, Vue, and Angular. These components can be made available for free or for a fee and are associated with the user's design system.</p>
+            </dd>
+          </div>
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">How can I get started on Ryclo?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">To get started, simply sign up for a Ryclo account. Once registered, you can start creating and sharing your components or explore the components created by others.</p>
+            </dd>
+          </div>
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">What are the supported frameworks on Ryclo?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">Ryclo supports React, Vue, and Angular, making it a versatile platform for component sharing and development within these popular frameworks.</p>
+            </dd>
+          </div>
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">Can I sell my components on Ryclo?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">Yes, you have the option to offer your components for free or set a price for them. This allows you to monetize your work and contribute to the Ryclo community.</p>
+            </dd>
+          </div>
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">How can I contact Ryclo's support team?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">You can reach out to our support team through the "Contact Us" page on the website. We're here to assist with any questions or issues you may have.</p>
+            </dd>
+          </div>
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">Is Ryclo open to feedback and feature requests?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">Absolutely! We value user feedback and are open to feature requests. You can provide feedback through our platform or contact our support team with your suggestions.</p>
             </dd>
           </div>
   

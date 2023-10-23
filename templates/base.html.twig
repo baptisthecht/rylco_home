@@ -1,3 +1,32 @@
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
   {% endblock %}
+{% if active != "" %}
+<title>{{ active }} - Rylco</title>
+{% else %}
+<title>Rylco</title>
+{% endif %}
+<link rel="icon" type="image/png" href="{{ asset('rylco-icon.png') }}" />
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 7px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #ffebeb;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #f85551;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #f9726e;
+    }
+</style>

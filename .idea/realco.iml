@@ -140,8 +140,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/vich/uploader-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfonycasts/verify-email-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nat/deploy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/stripe/stripe-php" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="react-dom" level="application" />
   </component>
 </module>
