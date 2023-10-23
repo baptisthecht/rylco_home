@@ -41,7 +41,7 @@ class ComponentRepository extends ServiceEntityRepository
 
 //    /**
 //     * @return Component[] Returns an array of Component objects
-//     */
+//     */lll
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('c')
@@ -63,4 +63,25 @@ class ComponentRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function getComponents($filterstypes = null, $filtersprices = null)
+    {
+        $query = $this->createQueryBuilder('a');
+        if($filterstypes != null){
+            $query->andWhere('a.type IN(:type)')
+                ->setParameter(':type', array_values($filterstypes));
+        }
+        if($filtersprices != null){
+            if(in_array("0", $filtersprices) && in_array("0.01", $filtersprices)){
+
+            }else if(in_array("0", $filtersprices)){
+                $query->andWhere('a.price = 0');
+            }else{
+                $query->andWhere('a.price >= :price')
+                    ->setParameter(':price', array_values($filtersprices));
+            }
+
+        }
+        $query->orderBy('a.createdAt');
+        return $query->getQuery()->getResult();
+    }
 }

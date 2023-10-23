@@ -4,51 +4,65 @@
 {% include "components/dashboard_layout.html.twig" with {'active': active} %}
 <!-- Left part - Content  -->
 <main>
+
+
     <div class="p-8">
-        <h3 class="text-base font-semibold leading-6 text-gray-900 mb-10">Community</h3>
-        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
-            {% for component in components %}
-            <div class="relative flex flex-col text-gray-700 bg-white shadow min-w-[300px] max-w-[600px] rounded-xl bg-clip-border">
-                <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-96 rounded-xl bg-clip-border flex flex-col items-center justify-center">
-                    <img
-                            src="{{ asset('comp.png') }}"
-                            class="object-contain"
-                    />
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-                            {{ component.name }}
-                        </p>
-                        <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-                            {% if component.price > 0 %}
-                                ${{ component.price }}
-                            {% else %}
-                                Free
-                            {% endif %}
-                        </p>
+        <div class="border-b border-gray-200 py-6 pb-10">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900">Community Components</h1>
+            <p class="mt-4 text-base text-gray-500">Explore the most recent components contributed by the community!</p>
+        </div>
+        <div class="w-full flex flex-row mt-6">
+            <div class="w-1/5 flex flex-col gap-5">
+                <form id="filters" class="flex flex-col gap-3 divide-y">
+                    <div class="py-10">
+                        <fieldset>
+                            <legend class="block text-sm font-medium text-gray-900">Framework</legend>
+                            <div class="space-y-3 pt-6">
+                                <div class="flex items-center">
+                                    <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" type="checkbox" name="types[]" id="React" value="1">
+                                    <label class="ml-3 text-sm text-gray-600" for="React">React</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" type="checkbox" name="types[]" id="Vue" value="2">
+                                    <label class="ml-3 text-sm text-gray-600" for="Vue">Vue</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" type="checkbox" name="types[]" id="Angular" value="3">
+                                    <label class="ml-3 text-sm text-gray-600" for="Angular">Angular</label>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
-                        {% if component.description|length > 0 %}
-                        {{ component.description }}
-                        {% else %}
-                            No description...
-                        {% endif %}
-                    </p>
-                </div>
-                <div class="p-6 pt-0 flex flex-row gap-3">
-                    <a href="" class="w-[90%] mx-auto rounded-md bg-primary py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300 text-center">See more</a>
-                    <a href="" class="w-[10%] mx-auto rounded-md bg-gray-200 py-2.5 shadow-sm text-black hover:text-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-200 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-[18px] h-[18px]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>
-                    </a>
-                </div>
+                    <div class="py-10 w-[90%]">
+                        <fieldset>
+                            <legend class="block text-sm font-medium text-gray-900">Price</legend>
+                            <div class="space-y-3 pt-6">
+                                <div class="flex items-center">
+                                    <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" type="checkbox" name="prices[]" id="Free" value="0">
+                                    <label class="ml-3 text-sm text-gray-600" for="React">Free</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" type="checkbox" name="prices[]" id="Paid" value="0.01">
+                                    <label class="ml-3 text-sm text-gray-600" for="Vue">Paid</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
             </div>
-            {% endfor %}
+            <div id="nocomponent" class="hidden flex flex-col items-center justify-center w-4/5">
+                <h1
+                        class="text-sm font-medium text-gray-900" >No components match your search.</h1>
+            </div>
+            <div class="w-4/5 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-5 " id="content">
+
+                {% include "components/_content.html.twig" %}
+            </div>
+
         </div>
     </div>
 </main>
+<script src="{{ asset('js/filters.js') }}"></script>
 <script>
     const tabs = document.querySelectorAll(".tab");
     const content = document.querySelectorAll(".tab-content");

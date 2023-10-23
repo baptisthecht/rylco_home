@@ -16,18 +16,22 @@ module.exports = {
       blue: colors.blue,
       amber: colors.amber,
       emerald: colors.emerald,
+      green: colors.green,
       indigo: colors.indigo,
       yellow: colors.yellow,
       orange: colors.orange,
       rose: colors.rose,
       slate: colors.slate,
       sky: colors.sky,
+      purple: colors.purple,
       gradient1: '#f7364d',
       gradient2: '#f77557',
       primary: {
         DEFAULT: '#f85551',
         hover: '#f9726e',
-        menubg: '#ffebeb'
+        menubg: '#ffebeb',
+        text: '#c01915',
+        badgebg: '#ffe2e1'
       }
     }
   },
