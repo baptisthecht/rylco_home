@@ -49,7 +49,10 @@ class ComponentsController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         $component = new Component();
-        $form = $this->createForm(CreateComponentType::class, $component);
+        $userDesignSystems = $this->getUser()->getDesignSystems();
+        $form = $this->createForm(CreateComponentType::class, $component, [
+            'userDesignSystems' => $userDesignSystems,
+        ]);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){

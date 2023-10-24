@@ -1631,13 +1631,6 @@
             "time": "2023-02-06T13:44:46+00:00"
         },
         {
-            "name": "nat/deploy",
-            "version": "1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nathalie-Verdavoir/deploy-heroku.git",
-                "reference": "91328f9b3da25a5aa033de608e4cf4d7660b41fa"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Nathalie-Verdavoir/deploy-heroku/zipball/91328f9b3da25a5aa033de608e4cf4d7660b41fa",
