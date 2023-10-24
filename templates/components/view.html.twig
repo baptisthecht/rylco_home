@@ -1,0 +1,6 @@
+<body class="bg-white">
+<div>
+    <img {% if component.imageName %}src="{{ asset('images/components/' ~ component.imageName) }}"{% else %} src="{{ asset('comp.png') }}" {% endif %} class="object-contain"/>
+</div>
+
+</body>

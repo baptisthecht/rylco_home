@@ -1,40 +1,105 @@
-<form name="create_component" method="post">
-    <div id="create_component">
-        <div>
-            <label for="create_component_name" class="required">Name</label>
-            <input type="text" id="create_component_name" name="create_component[name]" required="required" maxlength="255"/>
-        </div>
-        <div>
-            <label for="create_component_description">Description</label>
-            <input type="text" id="create_component_description" name="create_component[description]" maxlength="255"/>
-        </div>
-        <textarea>
-            <label for="create_component_code">Code</label>
-            <textarea type="text" id="create_component_code" name="create_component[code]" maxlength="100000000"/></textarea>
-        </div>
-        <div>
-            <label for="create_component_price">Price</label>
-            <input type="text" id="create_component_price" name="create_component[price]"/>
-        </div>
-        <div>
-            <label for="create_component_type" class="required">Type</label>
-            <select id="create_component_type" name="create_component[type]">
-                <option value="1">React</option>
-                <option value="2">Vue</option>
-                <option value="3">Angular</option>
-            </select>
-        </div>
-        <div>
-            <label for="create_component_DesignSystem" class="required">Design system</label>
-            <select id="create_component_DesignSystem" name="create_component[DesignSystem]">
-                {% for option in app.user.designsystems %}
-                <option value="{{ option.id }}">{{ option.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div>
-            <button type="submit" id="create_component_submit" name="create_component[submit]">Submit</button>
-        </div>
-        <input type="hidden" id="create_component__token" name="create_component[_token]" value="c78d6244.B6WTXsE95vGKHKcTQb7M-TWPFqAj-M-WIlKziAGyMOk.P8PXC4xRkMOnVeV_MtKPj1i7RNhPyYDfdT_jy2qBXdlJ_foWr2q0t98vnw"/>
+{% set active = "New component" %}
+{% include "base.html.twig" with {'active': active} %}
+<body class="bg-gray-50">
+{% include "components/dashboard_layout.html.twig" with {'active': active} %}
+<!-- Left part - Content  -->
+<main>
+
+    <div class="p-8">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Component {{ form_errors(form) }}</h1>
     </div>
-</form>
+    <div class="w-full flex flex-col items-center">
+        <form name="create_component" method="post" enctype="multipart/form-data" class="w-1/2">
+            <div id="create_component">
+                <div>
+                    <label for="create_component_name" class="block text-sm font-medium leading-6 text-gray-900 required">Name</label>
+                    <input type="text" id="create_component_name" name="create_component[name]" required="required" maxlength="255" class="mb-3 pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"/>
+                </div>
+                <div>
+                    <label for="create_component_description" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                    <input type="text" id="create_component_description" name="create_component[description]" maxlength="255" class="mb-3 pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"/>
+                </div>
+                <div>
+                    <label for="create_component_code" class="block text-sm font-medium leading-6 text-gray-900">Code</label>
+                    <textarea  id="create_component_code" name="create_component[code]" maxlength="100000000" class="mb-3 pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"></textarea>
+                </div>
+                <div>
+                    <label for="create_component_price" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
+                    <input type="number" id="create_component_price" name="create_component[price]" class="mb-3 pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" />
+                </div>
+                <div>
+                    <label for="create_component_type" class="block text-sm font-medium leading-6 text-gray-900 required">Type</label>
+                    <select id="create_component_type" name="create_component[type]" class="mb-3 block w-full rounded-md border-0 py-2.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6">
+                        <option value="1">React</option>
+                        <option value="2">Vue</option>
+                        <option value="3">Angular</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="create_component_DesignSystem" class="block text-sm font-medium leading-6 text-gray-900 required">Design system</label>
+                    <select id="create_component_DesignSystem" name="create_component[DesignSystem]" class=" mb-3 block w-full rounded-md border-0 py-2.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6">
+                       {% for option in app.user.designsystems %}
+                        <option value="{{ option.id }}">{{ option.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium leading-6 text-gray-900 required">Preview Image</label>
+                    <div class="vich-image">
+                        <input type="file" id="create_component_imageFile_file" name="create_component[imageFile][file]" required="required" class="mb-3 block w-full text-md text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"/>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" id="create_component_submit" name="create_component[submit]" class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">Submit</button>
+                </div>{{ form_row(form._token) }}
+            </div>
+        </form>
+
+    </div>
+</main>
+<script src="{{ asset('js/filters.js') }}"></script>
+<script>
+    const tabs = document.querySelectorAll(".tab");
+    const content = document.querySelectorAll(".tab-content");
+
+    for (let i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener("click", (e) => {
+            // Désactive tous les onglets
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("bg-primary-menubg");
+                tabs[i].classList.remove("text-primary");
+                tabs[i].classList.add("text-gray-500");
+                tabs[i].classList.add("hover:text-gray-700");
+                tabs[i].classList.remove("active");
+                content[i].classList.add("hidden");
+            }
+
+            // Active l'onglet cliqué
+            e.target.classList.add("bg-primary-menubg");
+            e.target.classList.add("text-primary");
+            tabs[i].classList.remove("text-gray-500");
+            tabs[i].classList.remove("hover:text-gray-700");
+            e.target.classList.add("active");
+            content[i].classList.remove("hidden");
+        });
+    }
+    const opencloseprofilemenu = () => {
+        const usermenu = document.getElementById('usermenu');
+        if (usermenu.className.includes('hidden')) {
+            usermenu.classList.remove('hidden');
+        } else {
+            usermenu.classList.add('hidden');
+        }
+    };
+    const openclosesortbymenu = () => {
+        const usermenu = document.getElementById('sortbymenu');
+        if (usermenu.className.includes('hidden')) {
+            usermenu.classList.remove('hidden');
+        } else {
+            usermenu.classList.add('hidden');
+        }
+    };
+</script>
+{% include 'components/flashes.html.twig' %}
+</body>
+

@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class CreateComponentType extends AbstractType
+class UpdateComponentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -27,7 +27,7 @@ class CreateComponentType extends AbstractType
                 'choice_label' => 'name', // Remplacez 'name' par le nom du champ du design system
             ])
             ->add('imageFile', VichImageType::class, [
-                'required' => true,
+                'required' => false,
                 'allow_delete' => false,
             ])
             ->add('submit', SubmitType::class)
@@ -39,6 +39,6 @@ class CreateComponentType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Component::class,
         ])
-        ->setRequired('userDesignSystems');
+            ->setRequired('userDesignSystems');;
     }
 }

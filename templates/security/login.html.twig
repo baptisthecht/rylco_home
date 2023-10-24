@@ -40,7 +40,7 @@
           </div>
         </div>
         {% if error %}
-            <div class="text-rose-500 w-full text-sm font-medium leading-6">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class="text-primary w-full text-sm font-medium leading-6">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
             <div class="flex items-center">
               <input id="_remember_me" name="_remember_me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-rose-600">
