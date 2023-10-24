@@ -85,7 +85,7 @@
                                                 {% else %}
                                                 <span class="whitespace-nowrap">{{ ds.components|length }} components</span>
                                                 {% endif %}
-                                                <span class="absolute inset-0"></span>
+                                                <a href="{{ path('app_show_design_systems', {'id': ds.id}) }}" class="absolute inset-0"></a>
                                             </a>
                                         </h2>
                                     </div>
