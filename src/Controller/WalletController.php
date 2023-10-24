@@ -23,7 +23,7 @@ class WalletController extends AbstractController
             $data = $depositform->getData();
             $formamount = floatval($data['amount']) ;
             $amount = 100*$formamount;
-            return $this->redirect('http://127.0.0.1:8000/deposit?amount=' . $amount);
+            return $this->redirect('https://rylco-home-db3585d559a3.herokuapp.com/deposit?amount=' . $amount);
 
         }
 
