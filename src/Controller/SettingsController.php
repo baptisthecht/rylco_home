@@ -50,25 +50,10 @@ class SettingsController extends AbstractController
         $formemail = $this->createForm(UpdateEmailType::class, $user);
         $formemail->handleRequest($request);
 
-
-
-
         if($formname->isSubmitted()){
             $entityManager = $doctrine->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            $email = (new Email())
-                ->from(New Address('noreply@rylco.app', 'RealCo'))
-                ->to('hechtbaptist@gmail.com')
-                //->cc('cc@example.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
-                ->subject('Edited name at realco!')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
-
-            $mailer->send($email);
             $this->addFlash('success', 'Your name have been updated successfully!');
             return $this->redirectToRoute('app_settings');
         }
@@ -77,18 +62,6 @@ class SettingsController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            $email = (new Email())
-                ->from(New Address('noreply@rylco.app', 'Rylco.app'))
-                ->to('hechtbaptist@gmail.com')
-                //->cc('cc@example.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
-                ->subject('Edited bio at rylco!')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
-
-            $mailer->send($email);
             $this->addFlash('success', 'Your bio have been updated successfully!');
             return $this->redirectToRoute('app_settings');
         }
@@ -97,18 +70,6 @@ class SettingsController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            $email = (new Email())
-                ->from(New Address('noreply@rylco.app', 'RealCo'))
-                ->to('hechtbaptist@gmail.com')
-                //->cc('cc@example.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
-                ->subject('NEW EMAIL!')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
-
-            $mailer->send($email);
             if($user->getImageName() !== "" && $user->getImageName() !== null){
                 $this->addFlash('success', 'Your profile picture have been updated successfully!');
             }else{
