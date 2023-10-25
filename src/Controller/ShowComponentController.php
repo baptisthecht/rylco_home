@@ -120,14 +120,29 @@ class ShowComponentController extends AbstractController
             // Mail de confirmation à l'acheteur
             $email = (new TemplatedEmail())
                 ->from(New Address('noreply@rylco.app', 'Rylco'))
-                ->to('hechtbaptist@gmail.com')
+                ->to($buyer->getEmail())
                 ->priority(Email::PRIORITY_HIGH)
-                ->subject('Congrats, you just made a new sale!')
-                ->htmlTemplate('email_templates/new_sell.html.twig')
+                ->subject('Congrats, ' . $component->getName() . ' is now yours!')
+                ->htmlTemplate('email_templates/new_buy.html.twig')
                 ->context([
                     'transaction' => $transaction
                 ]);
             $mailer->send($email);
+
+            // Mail de confirmation au vendeur seulement si $$
+            if($price > 0){
+                $email2 = (new TemplatedEmail())
+                    ->from(New Address('noreply@rylco.app', 'Rylco'))
+                    ->to($seller->getEmail())
+                    ->priority(Email::PRIORITY_HIGH)
+                    ->subject('Congrats, you just made a new sale!')
+                    ->htmlTemplate('email_templates/new_sell.html.twig')
+                    ->context([
+                        'transaction' => $transaction
+                    ]);
+                $mailer->send($email2);
+            }
+
 
             // Mail de confirmation au vendeur
 

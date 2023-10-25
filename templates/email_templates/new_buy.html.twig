@@ -1,0 +1,243 @@
+{% set active = "Confirmation email" %}
+{% include "base.html.twig" %}
+
+<title>
+
+</title>
+<!--[if !mso]><!-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--[if mso]>
+<noscript>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+</noscript>
+<![endif]-->
+<!--[if lte mso 11]>
+<style type="text/css">
+    .mj-outlook-group-fix { width:100% !important; }
+</style>
+<![endif]-->
+
+<!--[if !mso]><!-->
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+
+<!--<![endif]-->
+
+
+
+
+<style media="screen and (min-width:480px)">.moz-text-html .mj-column-per-100 { max-width: 100%; width: 100% !important; }</style>
+
+
+
+
+
+
+
+
+
+<div class="body" style="background-color:#FFFFFF;">
+
+
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="logoSection-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div class="logoSection" style="margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:33px 0;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="center" style="font-size:0px;padding:10px 0;word-break:break-word;">
+
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:67px;">
+
+                                                <img height="auto" src="https://i.postimg.cc/5td3b6Kd/rylco-icon.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="67" data-unique-identifier="">
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper-outlook" role="presentation" style="width:600px;" width="600" bgcolor="#FFFFFF" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div class="wrapper" style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;">
+            <tbody>
+            <tr>
+                <td style="border:1px solid #E3E6E9;direction:ltr;font-size:0px;padding:40px;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:518px;" width="518" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+                    <div style="margin:0px auto;max-width:518px;">
+
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                            <tbody>
+                            <tr>
+                                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:518px;" ><![endif]-->
+
+                                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                            <tbody>
+
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+
+                                                    <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;line-height:150%;text-align:center;color:#5F6875;"><div class="subheading">Hi, {{ transaction.buyer.firstname }}</div>
+                                                        <h1>Congrats, you just purchased a new component!</h1></div>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:0;padding-bottom:32px;word-break:break-word;">
+
+                                                    <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;line-height:150%;text-align:center;color:#5F6875;"><p>
+                                                            You just purchased <span style="font-weight: 600">{{ transaction.component.name }}</span> for <span style="font-weight: 600">{% if composant.amount > 0 %}${{ transaction.amount }}{% else %}free{% endif %}</span> from <span style="font-weight: 600">{{ transaction.seller.firstname }} {{ transaction.seller.lastname }}</span>. Check your new component now!</p></div>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td align="center" vertical-align="middle" style="font-size:0px;padding:0;word-break:break-word;">
+
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="center" bgcolor="#2A73FF" role="presentation" style="border:none;border-radius:6px;cursor:auto;height:48px;mso-padding-alt:0 26px;background:#2A73FF;" valign="middle">
+                                                                <a href="{{ "https://rylco-home-db3585d559a3.herokuapp.com/component/" ~ transaction.component.id }}" style="display:inline-block;background:#f85551;color:white;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;font-weight:500;line-height:48px;margin:0;text-decoration:none;text-transform:none;padding:0 26px;mso-padding-alt:0px;border-radius:6px;" target="_self">
+                                                                    View component
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td align="center" style="font-size:0px;padding:0;padding-top:16px;word-break:break-word;">
+
+                                                    <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;line-height:150%;text-align:center;color:#5F6875;"><small>
+                                                            <p>
+                                                                If you don't see the button, please copy and paste this link into your browser's address bar: <strong style="color: #f85551;">https://rylco-home-db3585d559a3.herokuapp.com/component/{{ transaction.component.id }}</strong></p>
+                                                        </small></div>
+
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                    <!--[if mso | IE]></td></tr></table></td></tr><![endif]-->
+                    <!-- Contact section should be visible by default -->
+
+                    <!--[if mso | IE]></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="footerSection-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div class="footerSection" style="margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:30px 0;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="center" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+
+                                    <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:12px;line-height:150%;text-align:center;color:#5F6875;">® Rylco Solutions - France</div>
+
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+
+
+</div>
+
+<img src="http://et.join.com/track/open.php?u=31117411&amp;id=a3979e8f34a742d983cfcc7e8867a6b1" height="1" width="1" alt="" data-unique-identifier="">
+
+</div></blockquote></body></html>
