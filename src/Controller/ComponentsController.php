@@ -4,7 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Component;
 use App\Entity\ComponentState;
+use App\Entity\DesignSystem;
+use App\Entity\DesignSystemState;
+use App\Entity\DesignSystemType;
 use App\Form\CreateComponentType;
+use App\Form\NewDesignSystemType;
 use App\Form\UpdateComponentType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,10 +54,27 @@ class ComponentsController extends AbstractController
 
         $component = new Component();
         $userDesignSystems = $this->getUser()->getDesignSystems();
+        $ds = new DesignSystem();
+        $formds = $this->createForm(NewDesignSystemType::class, $ds);
         $form = $this->createForm(CreateComponentType::class, $component, [
             'userDesignSystems' => $userDesignSystems,
         ]);
         $form->handleRequest($request);
+        $formds->handleRequest($request);
+
+        if($formds->isSubmitted() && $formds->isValid()){
+            $entityManager = $doctrine->getManager();
+            $ds->setCreatedAt(New \DateTimeImmutable());
+            $ds->setOwner($this->getUser());
+            $privatestate = $entityManager->getRepository(DesignSystemState::class)->find(2); // State 2 = Private
+            $ds->setState($privatestate);
+            $alltype = $entityManager->getRepository(DesignSystemType::class)->find(4); // State 4 = ALL
+            $ds->setType($alltype);
+            $entityManager->persist($ds);
+            $entityManager->flush();
+            $this->addFlash('success', 'Design System '. $ds->getName().' has been created, you can now add components into it!');
+            return $this->redirectToRoute('app_create_components', array('id' => $component->getId()));
+        }
 
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $doctrine->getManager();
@@ -68,6 +89,7 @@ class ComponentsController extends AbstractController
         }
         return $this->render('components/new.html.twig', [
             'form' => $form->createView(),
+            'formds' => $formds->createView()
         ]);
     }
 

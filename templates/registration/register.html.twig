@@ -33,24 +33,24 @@
                     <div>
                         <label for="firstname" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
                         <div class="mt-2">
-                            {{ form_widget(registrationForm.firstname, {'attr': {'class': 'px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-600 sm:text-sm sm:leading-6'}}) }}
+                            {{ form_widget(registrationForm.firstname, {'attr': {'class': 'px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6'}}) }}
                         </div>
-                        <div class="text-rose-500 w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.firstname) }}</div>
+                        <div class="text-primary-hover w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.firstname) }}</div>
                     </div>
                     <div>
                         <label for="lastname" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
                         <div class="mt-2">
-                            {{ form_widget(registrationForm.lastname, {'attr': {'class': 'px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-600 sm:text-sm sm:leading-6'}}) }}
+                            {{ form_widget(registrationForm.lastname, {'attr': {'class': 'px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6'}}) }}
                         </div>
-                        <div class="text-rose-500 w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.lastname) }}</div>
+                        <div class="text-primary-hover w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.lastname) }}</div>
                     </div>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
-                        {{ form_widget(registrationForm.email, {'attr': {'class': 'px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-600 sm:text-sm sm:leading-6'}}) }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6'}}) }}
                     </div>
-                    <div class="text-rose-500 w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.email) }}</div>
+                    <div class="text-primary-hover w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.email) }}</div>
                 </div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"  >
                 <div>
@@ -58,24 +58,24 @@
                         <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                     </div>
                     <div class="mt-2">
-                        {{ form_widget(registrationForm.password, {'attr': {'class': 'px-3  password block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-600 sm:text-sm sm:leading-6'}}) }}
+                        {{ form_widget(registrationForm.password, {'attr': {'class': 'px-3  password block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6'}}) }}
                     </div>
-                    <div class="text-rose-500 w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.password) }}</div>
+                    <div class="text-primary-hover w-full text-sm font-medium leading-6 pt-1">                    {{ form_errors(registrationForm.password) }}</div>
                 </div>
                 <div class="flex items-center">
-                    <input id="_remember_me" name="_remember_me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-rose-600">
-                    <label for="_remember_me" class="ml-3 block text-sm font-medium leading-6 text-gray-900">I agree the <a href="/tos" class="font-semibold leading-6 text-primary hover:text-rose-500">terms of services</a>.</label>
+                    <input id="_remember_me" name="_remember_me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary">
+                    <label for="_remember_me" class="ml-3 block text-sm font-medium leading-6 text-gray-900">I agree the <a href="/tos" class="font-semibold leading-6 text-primary hover:text-primary-hover">terms of services</a>.</label>
                 </div>
                 <div>
                     {{ form_row(registrationForm._token) }}
-                    <button type="submit" class="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600 transition ease-in-out duration-300">Register</button>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">Register</button>
                     {{ form_end(registrationForm) }}
                 </div>
             </form>
 
             <p class="mt-10 text-center text-sm text-gray-500">
                 Already a member?
-                <a href="/login" class="font-semibold leading-6 text-primary hover:text-rose-500">Log in here</a>
+                <a href="/login" class="font-semibold leading-6 text-primary hover:text-primary-hover">Log in here</a>
             </p>
         </div>
     </div>

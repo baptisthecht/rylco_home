@@ -21,7 +21,7 @@ class DesignSystem
     #[ORM\Column(type: 'datetime')]
     private $createdAt;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'designSystems')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'designSystems')]
     #[ORM\JoinColumn(nullable: false)]
     private $owner;
 

@@ -1,0 +1,60 @@
+{% set active = "New component" %}
+{% include "base.html.twig" with {'active': active} %}
+<body class="bg-gray-50">
+{% include "components/dashboard_layout.html.twig" with {'active': active} %}
+<!-- Left part - Content  -->
+<main>
+
+    <div class="p-8">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Design System {{ form_errors(form) }}</h1>
+    </div>
+    <div class="w-full flex flex-col items-center">
+        {{ form(form) }}
+    </div>
+</main>
+<script src="{{ asset('js/filters.js') }}"></script>
+<script>
+    const tabs = document.querySelectorAll(".tab");
+    const content = document.querySelectorAll(".tab-content");
+
+    for (let i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener("click", (e) => {
+            // Désactive tous les onglets
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("bg-primary-menubg");
+                tabs[i].classList.remove("text-primary");
+                tabs[i].classList.add("text-gray-500");
+                tabs[i].classList.add("hover:text-gray-700");
+                tabs[i].classList.remove("active");
+                content[i].classList.add("hidden");
+            }
+
+            // Active l'onglet cliqué
+            e.target.classList.add("bg-primary-menubg");
+            e.target.classList.add("text-primary");
+            tabs[i].classList.remove("text-gray-500");
+            tabs[i].classList.remove("hover:text-gray-700");
+            e.target.classList.add("active");
+            content[i].classList.remove("hidden");
+        });
+    }
+    const opencloseprofilemenu = () => {
+        const usermenu = document.getElementById('usermenu');
+        if (usermenu.className.includes('hidden')) {
+            usermenu.classList.remove('hidden');
+        } else {
+            usermenu.classList.add('hidden');
+        }
+    };
+    const openclosesortbymenu = () => {
+        const usermenu = document.getElementById('sortbymenu');
+        if (usermenu.className.includes('hidden')) {
+            usermenu.classList.remove('hidden');
+        } else {
+            usermenu.classList.add('hidden');
+        }
+    };
+</script>
+{% include 'components/flashes.html.twig' %}
+</body>
+
