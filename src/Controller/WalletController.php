@@ -23,6 +23,7 @@ class WalletController extends AbstractController
             $data = $depositform->getData();
             $formamount = floatval($data['amount']) ;
             $amount = 100*$formamount;
+            if($amount == 0){$this->addFlash('success', 'You must type an amount to deposit!'); return $this->redirectToRoute('app_wallet');}
             return $this->redirect('https://rylco-home-db3585d559a3.herokuapp.com/deposit?amount=' . $amount);
 
         }

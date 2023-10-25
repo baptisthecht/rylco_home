@@ -23,27 +23,6 @@ class DesignSystemsController extends AbstractController
         ]);
     }
 
-    #[Route('/designsystems/new', name: 'app_new_design_system')]
-    public function createDS(Request $request, ManagerRegistry $doctrine): Response
-    {
-        $ds = new DesignSystem();
-        $form = $this->createForm(NewDesignSystemType::class, $ds);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($ds);
-            $entityManager->flush();
-            $this->addFlash('success', $ds->getName() . ' has been successfully created.');
-            return $this->redirectToRoute('app_design_systems');
-        }
-
-        $this->denyAccessUnlessGranted('ROLE_CLIENT');
-        return $this->render('design_systems/new.html.twig', [
-            'controller_name' => 'DesignSystemsController',
-            'form' => $form->createView()
-        ]);
-    }
-
     #[Route('/designsystem/{id}', name: 'app_show_design_systems')]
     public function showDS(int $id, ManagerRegistry $doctrine): Response
     {

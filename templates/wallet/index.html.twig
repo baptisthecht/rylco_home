@@ -21,7 +21,7 @@
                                 <div class="ml-3">
                                     <p class="text-sm text-yellow-700">
                                         You have no balance.
-                                        <a href="#" class="font-medium text-yellow-700 underline hover:text-yellow-600">Deposit to your wallet to have some credits.</a>
+                                        <a onclick="openDepositModal()" href="#" class="font-medium text-yellow-700 underline hover:text-yellow-600">Deposit to your wallet to have some credits.</a>
                                     </p>
                                 </div>
                             </div>
@@ -105,7 +105,8 @@
                                             <span class="text-gray-500 sm:text-sm">$</span>
                                         </div>
                                         {{ form_start(depositform) }}
-                                        {{ form_widget(depositform.amount, { 'attr' : { 'class' : 'block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6' }} ) }}
+
+                                        {{ form_widget(depositform.amount, { 'attr' :  { 'class' : 'block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6' }} ) }}
                                          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                             <span class="text-gray-500 sm:text-sm" id="price-currency">USD</span>
                                         </div>
