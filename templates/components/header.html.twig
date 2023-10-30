@@ -135,7 +135,7 @@
           {% else %}
             <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-6">
               <a href="/login" class="flex items-center gap-1">
-                <p href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in</p>
+                <p class="text-sm font-semibold leading-6 text-gray-900">Log in</p>
                 <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[15px] h-[15px]"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" /></svg>
               </span>
               </a>
@@ -168,7 +168,11 @@
                   <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
                 </div>
                 <div class="py-6">
-                  <a href="#" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600">Log in</a>
+                  {% if app.user %}
+                  <a href="/dashboard" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600">Go to dashboard</a>
+                  {% else %}
+                  <a href="/login" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600">Log in</a>
+                  {% endif %}
                 </div>
               </div>
             </div>

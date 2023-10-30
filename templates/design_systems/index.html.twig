@@ -56,6 +56,7 @@
                         </div>
 
                     {% endif %}
+                    <div class="px-4 sm:px-6 lg:px-8">
                     <ul role="list" class="divide-y divide-gray-200">
                         {% for ds in app.user.designsystems|reverse %}
                             <li class="relative flex items-center space-x-4 px-4 py-4 sm:px-6 lg:px-8 hover:bg-gray-100 rounded-xl">
@@ -142,7 +143,7 @@
                         {% endfor %}
                         <!-- More deployments... -->
                     </ul>
-
+                    </div>
                 </main>
             </div>
         </main>
