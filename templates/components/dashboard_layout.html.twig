@@ -1,6 +1,6 @@
 <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-    <div class=" hidden relative z-50 lg:hidden" role="dialog" aria-modal="true">
+    <div id ="menumobile" class="hidden relative z-50 lg:hidden" role="dialog" aria-modal="true">
 
         <!--
           Off-canvas menu backdrop, show/hide based on off-canvas menu state.
@@ -37,9 +37,9 @@
                     To: "opacity-0"
                 -->
                 <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                    <button type="button" class="-m-2.5 p-2.5">
+                    <button onclick="document.getElementById('menumobile').classList.add('hidden')" type="button" class="-m-2.5 p-2.5">
                         <span class="sr-only">Close sidebar</span>
-                        <svg class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -169,7 +169,7 @@
                                         {% for ds in app.user.designsystems %}
                                             <li>
                                                 <!-- Current: "bg-gray-50 text-primary", Default: "text-gray-700 hover:text-primary hover:bg-gray-50" -->
-                                                <a href="#" class="text-gray-700 hover:text-primary hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                                                <a href="{{ "/designsystem/" ~ ds.id }}" class="text-gray-700 hover:text-primary hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                     <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-primary group-hover:text-primary">H</span>
                                                     <span class="truncate">{{ ds.name }}</span>
                                                 </a>
@@ -342,7 +342,7 @@
 
     <div class="lg:pl-72">
         <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-            <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+            <button onclick="document.getElementById('menumobile').classList.remove('hidden')" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                 <span class="sr-only">Open sidebar</span>
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -384,7 +384,7 @@
                             <img class="h-8 w-8 rounded-full bg-gray-50 object-cover" {% if app.user.imageName %}src="{{ asset('images/users/' ~ app.user.imageName) }}"{% else%}src="{{ asset('images/users/defaultuser.png') }}"{% endif %} alt="">
                             <span class="hidden lg:flex lg:items-center">
                                 <span class="flex gap-[6px] items-center">
-                                                    <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{ app.user.firstname }} {{ app.user.lastname }}</span>
+                                                    <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{ app.user }}</span>
                                     {% if app.user.isPro %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-[18px] h-[18px] text-primary">
   <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
 </svg>

@@ -8,7 +8,7 @@
         <div class="sm:hidden">
             <label for="tabs" class="sr-only">Select a tab</label>
             <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-rose-500 focus:ring-rose-500">
+            <select id="selecttab" name="tabs" class="block w-full py-2 px-2 rounded-md focus:border-rose-500 focus:ring-rose-500 shadow">
                 <option selected>Your components</option>
                 <option>Purchased components</option>
             </select>
@@ -25,7 +25,7 @@
     </div>
     <div class="menu">
         <div class="content">
-            <div class="tab-content active"> <!-- Your components section -->
+            <div id="tab1" class="tab-content active"> <!-- Your components section -->
                 <!-- Deployment list -->
                 {% if app.user.components|length == 0 %}
                     <div class="text-center h-1/2 flex flex-col justify-center">
@@ -66,20 +66,20 @@
                                     {% endif %}
                                     <h2 class="min-w-0 text-sm font-semibold leading-6 text-gray-700">
                                         <a href="#" class="flex gap-x-2">
-                                            <span class="truncate">{{ component.name }}</span>
+                                            <span class="whitespace-nowrap">{{ component.name }}</span>
                                             <span class="text-gray-400">/</span>
-                                            <span class="whitespace-nowrap">{{ component.designsystem }}</span>
+                                            <span class="truncate">{{ component.designsystem }}</span>
                                             <a href="{{ path('app_show_component', {'id': component.id}) }}" class="absolute inset-0"></a>
 
                                         </a>
                                     </h2>
                                 </div>
                                 <div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
-                                    <p class="truncate">{{ component.type }} Component</p>
+                                    <p class="whitespace-nowrap">{{ component.type }} Component</p>
                                     <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
                                         <circle cx="1" cy="1" r="1" />
                                     </svg>
-                                    <p class="whitespace-nowrap">Created
+                                    <p class="truncate">Created
                                         {# Get the current timestamp in seconds #}
                                         {% set currentTime = 'now'|date('U') %}
 
@@ -131,7 +131,7 @@
                 </ul>
                 </div>
             </div>
-            <div class="tab-content hidden">
+            <div id="tab2" class="tab-content hidden">
                 <!-- Deployment list -->
                 {% if app.user.buys|length == 0 %}
                     <div class="text-center h-1/2 flex flex-col justify-center">
@@ -151,20 +151,20 @@
                                         </div>
                                     <h2 class="min-w-0 text-sm font-semibold leading-6 text-gray-700">
                                         <a href="#" class="flex gap-x-2">
-                                            <span class="truncate">{{ buy.component.name }}</span>
+                                            <span class="whitespace-nowrap">{{ buy.component.name }}</span>
                                             <span class="text-gray-400">/</span>
-                                            <span class="whitespace-nowrap">{{ buy.component.designsystem }} of {{ buy.component.owner.firstname }} {{ buy.component.owner.lastname }}</span>
+                                            <span class="truncate">{{ buy.component.designsystem }} of {{ buy.component.owner.firstname }} {{ buy.component.owner.lastname }}</span>
                                             <a href="{{ path('app_show_component', {'id': buy.component.id}) }}" class="absolute inset-0"></a>
 
                                         </a>
                                     </h2>
                                 </div>
                                 <div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
-                                    <p class="truncate">{{ buy.component.type }} Component</p>
+                                    <p class="whitespace-nowrap">{{ buy.component.type }} Component</p>
                                     <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
                                         <circle cx="1" cy="1" r="1" />
                                     </svg>
-                                    <p class="whitespace-nowrap">Purchased
+                                    <p class="truncate">Purchased
                                         {# Get the current timestamp in seconds #}
                                         {% set currentTime = 'now'|date('U') %}
 
@@ -216,6 +216,25 @@
 </div>
 </div>
 <script>
+    const select = document.getElementById('selecttab');
+    const tab1 = document.getElementById('tab1');
+    const tab2 = document.getElementById('tab2');
+    select.addEventListener('change', () =>
+    {
+        if(select.value === "Your components"){
+            tab2.classList.add('hidden')
+            tab2.classList.remove('active')
+            tab1.classList.remove('hidden')
+            tab1.classList.add('active')
+        }else{
+            tab1.classList.add('hidden')
+            tab1.classList.remove('active')
+            tab2.classList.remove('hidden')
+            tab2.classList.add('active')
+        }
+    });
+</script>
+<script>
     const tabs = document.querySelectorAll(".tab");
     const content = document.querySelectorAll(".tab-content");
 
@@ -240,6 +259,11 @@
             content[i].classList.remove("hidden");
         });
     }
+
+
+
+
+
     const opencloseprofilemenu = () => {
         const usermenu = document.getElementById('usermenu');
         if (usermenu.className.includes('hidden')) {

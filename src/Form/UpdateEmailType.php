@@ -15,7 +15,7 @@ class UpdateEmailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', EmailType::class)
             ->add('update', SubmitType::class)
 
         ;

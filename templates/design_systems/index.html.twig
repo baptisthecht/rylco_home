@@ -76,14 +76,14 @@
                                         {% endif %}
                                         <h2 class="min-w-0 text-sm font-semibold leading-6 text-gray-700">
                                             <a href="#" class="flex gap-x-2">
-                                                <span class="truncate">{{ ds.name }}</span>
+                                                <span class="whitespace-nowrap">{{ ds.name }}</span>
                                                 <span class="text-gray-400">/</span>
                                                 {% if ds.components|length == 0 %}
-                                                <span class="whitespace-nowrap">Empty</span>
+                                                <span class="truncate">Empty</span>
                                                 {% elseif ds.components|length == 1 %}
-                                                <span class="whitespace-nowrap">{{ ds.components|length }} component</span>
+                                                <span class="truncate">{{ ds.components|length }} component</span>
                                                 {% else %}
-                                                <span class="whitespace-nowrap">{{ ds.components|length }} components</span>
+                                                <span class="truncate">{{ ds.components|length }} components</span>
                                                 {% endif %}
                                                 <a href="{{ path('app_show_design_systems', {'id': ds.id}) }}" class="absolute inset-0"></a>
                                             </a>

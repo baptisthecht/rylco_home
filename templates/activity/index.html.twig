@@ -8,7 +8,7 @@
                 <div class="sm:hidden">
                     <label for="tabs" class="sr-only">Select a tab</label>
                     <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-                    <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-rose-500 focus:ring-rose-500">
+                    <select id="selecttab" name="tabs" class="block w-full py-2 px-2 rounded-md focus:border-rose-500 focus:ring-rose-500 shadow">
                         <option selected>All activites</option>
                         <option>Sales</option>
                         <option>Purchases</option>
@@ -27,7 +27,7 @@
             </div>
             <div class="menu">
                 <div class="content">
-                    <div class="tab-content active">
+                    <div id="tab1" class="tab-content active">
                         <div class="px-8">
                             <h3 class="text-base font-semibold leading-6 text-gray-900">All-time stats</h3>
                             <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -99,7 +99,12 @@
                                                     {% endif %}
 
                                                     <span class="hidden sm:inline">·</span>
-                                                    <span>128 GB SSD disk</span>
+
+                                                    {% if transaction in buys %}
+                                                        <span>{{ transaction.seller.firstname }} {{ transaction.seller.lastname }}</span>
+                                                    {% else %}
+                                                        <span>{{ transaction.buyer.firstname }} {{ transaction.buyer.lastname }}</span>
+                                                    {% endif %}
                                                 </div>
                                             </td>
                                             {% if transaction in buys %}
@@ -126,7 +131,7 @@
                             {% endif%}
                             </div>
                     </div>
-                    <div class="tab-content hidden">
+                    <div id="tab2" class="tab-content hidden">
                         <div class="px-8">
                             <h3 class="text-base font-semibold leading-6 text-gray-900">All-time stats</h3>
                             <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -193,11 +198,11 @@
                                                     {% endif %}
 
                                                     <span class="hidden sm:inline">·</span>
-                                                    <span>128 GB SSD disk</span>
+                                                    <span>{{ transaction.buyer }}</span>
                                                 </div>
                                             </td>
                                             <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">{{ transaction.component.designsystem }}</td>
-                                            <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">{{ transaction.buyer.firstname }} {{ transaction.buyer.lastname }}</td>
+                                            <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">{{ transaction.buyer }}</td>
                                             <td class="px-3 py-3.5 text-sm text-gray-500">
                                                 <div>{% if transaction.amount is null %}Free{% elseif transaction.amount == 0 %}Free{% else %}${{ transaction.amount }}{% endif %}</div>
                                             </td>
@@ -214,7 +219,7 @@
                             {% endif%}
                         </div>
                     </div>
-                    <div class="tab-content hidden">
+                    <div id="tab3" class="tab-content hidden">
                         <div class="px-8">
                             <h3 class="text-base font-semibold leading-6 text-gray-900">All-time stats</h3>
                             <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -275,11 +280,11 @@
                                                 <div class="font-medium text-gray-900"><a href="{{ path('app_show_component', {'id': transaction.component.id}) }}">{{ transaction.component.name }}</a></div>
                                                 <div class="mt-1 flex flex-col text-gray-500 sm:block lg:hidden">
                                                     <span class="hidden sm:inline">·</span>
-                                                    <span>128 GB SSD disk</span>
+                                                    <span>{{ transaction.seller }}</span>
                                                 </div>
                                             </td>
                                             <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">{{ transaction.component.designsystem }}</td>
-                                            <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">{{ transaction.seller.firstname }} {{ transaction.seller.lastname }}</td>
+                                            <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">{{ transaction.seller }}</td>
                                             <td class="px-3 py-3.5 text-sm text-gray-500">
                                                 <div>{% if transaction.amount is null %}Free{% elseif transaction.amount == 0 %}Free{% else %}${{ transaction.amount }}{% endif %}</div>
                                             </td>
@@ -301,6 +306,33 @@
         </main>
     </div>
     </div>
+<script>
+    const select = document.getElementById('selecttab');
+    const tab1 = document.getElementById('tab1');
+    const tab2 = document.getElementById('tab2');
+    const tab3 = document.getElementById('tab3');
+    select.addEventListener('change', () =>
+    {
+        // Unselect all
+        tab1.classList.add('hidden')
+        tab1.classList.remove('active')
+        tab2.classList.add('hidden')
+        tab2.classList.remove('active')
+        tab3.classList.add('hidden')
+        tab3.classList.remove('active')
+
+        if(select.value === "All activites"){
+            tab1.classList.remove('hidden')
+            tab1.classList.add('active')
+        }else if(select.value === "Sales"){
+            tab2.classList.remove('hidden')
+            tab2.classList.add('active')
+        }else{
+            tab3.classList.remove('hidden')
+            tab3.classList.add('active')
+        }
+    });
+</script>
 <script>
     const tabs = document.querySelectorAll(".tab");
     const content = document.querySelectorAll(".tab-content");

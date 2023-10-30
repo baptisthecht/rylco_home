@@ -246,4 +246,5 @@ class Component
     {
         return $this->imageSize;
     }
+
 }
