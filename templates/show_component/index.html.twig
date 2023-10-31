@@ -137,6 +137,13 @@
                 Edit
               </a>
             </span>
+            {% set boughtbysomeone = false %}
+            {% for act in activities %}
+                {% if act.component == component %}
+                    {% set boughtbysomeone = true %}
+                {% endif %}
+            {% endfor %}
+            {% if boughtbysomeone == false %}
             <span class="ml-3 block">
               <a href="{{ "/components/delete/" ~ component.id }}" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400">
@@ -145,6 +152,7 @@
                 Delete
               </a>
             </span>
+            {% endif %}
             {% endif %}
             <span class="ml-3 block">
               <a href="{{ "/components/view/" ~ component.id }}" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">

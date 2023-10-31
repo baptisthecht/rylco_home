@@ -20,7 +20,11 @@ class UpdateComponentType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('code', TextareaType::class)
-            ->add('price', NumberType::class)
+            ->add('price', NumberType::class, [
+                'attr' => array(
+                    'placeholder' => 'Free'
+                )
+            ])
             ->add('type')
             ->add('DesignSystem', ChoiceType::class, [
                 'choices' => $options['userDesignSystems'],

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Activity;
 use App\Entity\Component;
 use App\Entity\ComponentState;
 use App\Entity\DesignSystem;
@@ -144,6 +145,18 @@ class ComponentsController extends AbstractController
 
         if($component->getOwner() !== $this->getUser()){
             $this->addFlash('success', "You can't delete this component.");
+            return $this->redirectToRoute('app_dashboard');
+        }
+
+        $activities = $doctrine->getRepository(Activity::class)->findAll();
+        $boughtbysomeone = false;
+        foreach ($activities as $act){
+            if($act->getComponent() == $component){
+                $boughtbysomeone = true;
+            }
+        }
+        if($boughtbysomeone){
+            $this->addFlash('success', "You can't delete this component because someone already bought it.");
             return $this->redirectToRoute('app_dashboard');
         }
 

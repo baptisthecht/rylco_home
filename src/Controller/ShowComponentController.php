@@ -28,7 +28,7 @@ class ShowComponentController extends AbstractController
     {
 
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
-
+        $activitites = $doctrine->getRepository(Activity::class)->findAll();
         $repository = $doctrine->getRepository(Component::class);
         $component = $repository->find($id);
 
@@ -155,7 +155,8 @@ class ShowComponentController extends AbstractController
             'controller_name' => 'ShowComponentController',
             'component' => $component,
             'form' => $form->createView(),
-            'stateform' => $changeComponentStateForm->createView()
+            'stateform' => $changeComponentStateForm->createView(),
+            'activities' => $activitites
         ]);
     }
 }
