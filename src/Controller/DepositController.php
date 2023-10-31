@@ -36,8 +36,8 @@ class DepositController extends AbstractController
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => 'https://rylco-home-db3585d559a3.herokuapp.com/confirmation_payment?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => 'https://rylco-home-db3585d559a3.herokuapp.com/cancelled_payment',
+            'success_url' => 'https://www.rylco.app/confirmation_payment?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => 'https://www.rylco.app/cancelled_payment',
         ]);
 
        return $this->redirect($checkout_session->url, 303);
