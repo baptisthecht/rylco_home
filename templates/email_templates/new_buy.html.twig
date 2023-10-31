@@ -134,7 +134,7 @@
                                                 <td align="center" style="font-size:0px;padding:0;padding-bottom:32px;word-break:break-word;">
 
                                                     <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;line-height:150%;text-align:center;color:#5F6875;"><p>
-                                                            You just purchased <span style="font-weight: 600">{{ transaction.component.name }}</span> for <span style="font-weight: 600">{% if component.amount > 0 %}${{ transaction.amount }}{% else %}free{% endif %}</span> from <span style="font-weight: 600">{{ transaction.seller.firstname }} {{ transaction.seller.lastname }}</span>. Check your new component now!</p></div>
+                                                            You just purchased <span style="font-weight: 600">{{ component.name }}</span> for <span style="font-weight: 600">{% if transaction.amount > 0 %}${{ transaction.amount }}{% else %}free{% endif %}</span> from <span style="font-weight: 600">{{ transaction.seller.firstname }} {{ transaction.seller.lastname }}</span>. Check your new component now!</p></div>
                                                 </td>
                                             </tr>
 

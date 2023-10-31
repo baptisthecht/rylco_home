@@ -77,7 +77,7 @@ class ComponentsController extends AbstractController
             return $this->redirectToRoute('app_create_components', array('id' => $component->getId()));
         }
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
             $entityManager = $doctrine->getManager();
             $component->setCreatedAt(New \DateTimeImmutable());
             $component->setOwner($this->getUser());

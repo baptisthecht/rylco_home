@@ -48,7 +48,7 @@
             <span class="text-lg font-medium text-gray-900 text-center">You are not authorized to see this private component.<br><a href="/components" class="text-primary">Go back</a> to components.</span>
         </div>
         {% else %}
-        <div class="lg:flex lg:items-center lg:justify-between">
+        <span class="lg:flex lg:items-center lg:justify-between">
             <div class="min-w-0 flex-1">
                 <h2 class="text-3xl font-bold  text-gray-900 sm:tracking-tight mb-1">{{ component.name }}</h2>
                 <p class="text-md font-medium leading-7 text-gray-900 sm:truncate  sm:tracking-tight mb-1">{% if component.description|length > 0 %}{{ component.description }}{% else %}No description...{% endif %}</p>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <p class="mt-5 flex lg:ml-4 lg:mt-0">
+            <div class="mt-5 flex lg:ml-4 lg:mt-0">
             {% if component.owner == app.user %}
             <span class="block">
               <a href="{{ "/components/edit/" ~ component.id }}" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -180,40 +180,42 @@
                 </button>
             </span>
             {% else %}
-            {% if hasBoughtComponent %}
-            <p class="inline-flex items-center px-3 py-2 text-sm font-semibold text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span class="ml-2">Already bought</span>
-            </p>
-            {% else %}
-            {% if (component.price == 0) or (component.price == null) %}
-            <span class="sm:ml-3">
-                <button onclick="confirmBuy()" type="button" class="inline-flex items-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                    <span class="ml-2">Add for free</span>
-                  </button>
-            </span>
-            {% else %}
-            <span class="sm:ml-3">
-                <button
-                  {% if app.user.balance >= component.price %}
-                  onclick="openBuyModal()"
-                  {% else %}
-                  onclick="openNoBalanceModal()"
-                  {% endif %}
-                  type="button" class="inline-flex items-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-                    <span class="ml-2">Buy</span>
-                  </button>
-            </span>
-            {% endif %}
-            {% endif %}
+                {% if hasBoughtComponent %}
+                <span class="ml-3">
+                    <p class="inline-flex items-center px-3 py-2 text-sm font-semibold text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span class="ml-2">Already bought</span>
+                    </p>
+                </span>
+                {% else %}
+                    {% if (component.price == 0) or (component.price == null) %}
+                        <span class="ml-3">
+                        <button onclick="confirmBuy()" type="button" class="inline-flex items-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <span class="ml-2">Add for free</span>
+                          </button>
+                    </span>
+                    {% else %}
+                        <span class="ml-3">
+                        <button
+                          {% if app.user.balance >= component.price %}
+                          onclick="openBuyModal()"
+                          {% else %}
+                          onclick="openNoBalanceModal()"
+                          {% endif %}
+                          type="button" class="inline-flex items-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                            </svg>
+                            <span class="ml-2">Buy</span>
+                          </button>
+                    </span>
+                    {% endif %}
+                {% endif %}
             {% endif %}
         </div>
     </div>

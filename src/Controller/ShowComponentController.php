@@ -125,7 +125,8 @@ class ShowComponentController extends AbstractController
                 ->subject('Congrats, ' . $component->getName() . ' is now yours!')
                 ->htmlTemplate('email_templates/new_buy.html.twig')
                 ->context([
-                    'transaction' => $transaction
+                    'transaction' => $transaction,
+                    'component' => $component
                 ]);
             $mailer->send($email);
 
