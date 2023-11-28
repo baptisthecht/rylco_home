@@ -1,0 +1,122 @@
+{% set active = "" %}
+{% include "base.html.twig" %}
+<div class="bg-white">
+    {% include 'components/header.html.twig' %}
+    <main class="isolate">
+        <!-- Hero section -->
+        <div class="relative pt-14">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-gradient1 to-gradient2 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+            </div>
+            <div class="py-48 sm:py-64">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl text-center">
+                        <h1 class="text-xl font-bold tracking-tight text-gray-900 ">This page will be
+                            <span class="bg-gradient-to-r from-gradient2 to-gradient1 bg-clip-text text-transparent w-min text-xl font-bold tracking-tight">
+                  available
+                </span>
+                            soon.</h1>
+                        <p class="mt-6 text-lg leading-8 text-gray-500">Sorry, this website is still under developement, and this page hasn't been finished yet!</p>
+                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                            <a href="/" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition ease-in-out duration-300">Back home</a>
+
+                            <a href="/company" class="flex items-center gap-1">
+                                <p  class="text-sm font-semibold leading-6 text-gray-900">Learn more</p>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[15px] h-[15px]"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" /></svg>
+                  </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-gradient1 to-gradient2 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="mx-auto mt-32 max-w-7xl px-6 lg:px-8">
+        <footer aria-labelledby="footer-heading" class="relative border-t border-gray-900/10 py-24 sm:mt-56 sm:py-32">
+            <h2 id="footer-heading" class="sr-only">Footer</h2>
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <img class="h-7" src="{{ asset('rylco-icon.png') }}" alt="Company name">
+                <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900">Solutions</h3>
+                            <ul role="list" class="mt-6 space-y-4">
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Hosting</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Data Services</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Uptime Monitoring</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Enterprise Services</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-10 md:mt-0">
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900">Support</h3>
+                            <ul role="list" class="mt-6 space-y-4">
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Pricing</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Documentation</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Guides</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">API Reference</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
+                            <ul role="list" class="mt-6 space-y-4">
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Jobs</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Press</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Partners</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-10 md:mt-0">
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+                            <ul role="list" class="mt-6 space-y-4">
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Claim</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
