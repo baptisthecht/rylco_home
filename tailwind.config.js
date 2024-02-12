@@ -27,7 +27,7 @@ module.exports = {
       gradient1: '#f7364d',
       gradient2: '#f77557',
       primary: {
-        DEFAULT: '#f85551',
+        DEFAULT: '#5186f8',
         hover: '#f9726e',
         menubg: '#ffebeb',
         text: '#c01915',
